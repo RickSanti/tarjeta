@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Rayman</title>
+<meta name="description" content="Lentes con cámara Ray-Ban Meta. Escríbenos por WhatsApp o síguenos en TikTok.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800;900&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0a0a; --surface:#161616; --line:#2b2b2b;
+    --text:#f5f5f5; --muted:#a8a8a8;
+    --red:#e62e2d;      /* barras, botones, texto grande */
+    --red-text:#ff5a52; /* texto rojo pequeño sobre negro */
+  }
+  *{box-sizing:border-box;margin:0}
+  html{background:var(--bg)}
+  body{min-height:100vh;display:flex;justify-content:center;padding:32px 20px 24px;
+    font-family:"Montserrat",system-ui,sans-serif;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+  main{width:100%;max-width:420px;display:flex;flex-direction:column;gap:24px}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible{outline:2px solid var(--red-text);outline-offset:3px}
+
+  .brand{display:flex;flex-direction:column;gap:4px}
+  .kicker{font-size:12px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;color:var(--red-text)}
+  h1{font-family:"Permanent Marker",cursive;font-weight:400;font-size:52px;line-height:1;letter-spacing:.01em;
+    transform:rotate(-2deg);transform-origin:left;margin-top:6px;width:max-content;max-width:100%}
+  h1 span{display:block;height:6px;margin-top:4px;background:var(--red);border-radius:3px;transform:skewX(-20deg)}
+  .handle{font-size:14px;font-weight:700;color:var(--muted);margin-top:10px}
+
+  .price{position:relative;background:var(--surface);border-left:5px solid var(--red);border-radius:4px 16px 16px 4px;
+    padding:18px 18px 16px;display:flex;flex-direction:column;gap:4px}
+  .price .kicker{font-size:11px}
+  .price strong{font-size:26px;font-weight:900;letter-spacing:-.01em}
+  .price .sub{font-size:14px;color:var(--muted)}
+  .price .amount{font-family:"Permanent Marker",cursive;font-size:46px;line-height:1.05;margin-top:10px;width:max-content}
+  .price .amount::after{content:"";display:block;height:4px;margin-top:2px;background:var(--red);border-radius:2px}
+  .price .dm{font-size:13px;font-weight:700;color:var(--muted);margin-top:6px}
+
+  .actions{display:flex;flex-direction:column;gap:12px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:14px;
+    font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;transition:transform .1s}
+  .btn:active{transform:scale(.98)}
+  .btn svg{width:22px;height:22px;flex:none}
+  .wa{background:var(--red);color:#fff}
+  .row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .ghost{border:1.5px solid var(--line);font-size:14px}
+
+  .label{font-size:12px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+  .item{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:14px;background:var(--surface)}
+  .item svg{width:24px;height:24px;stroke:var(--red-text);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .item b{font-size:14px;font-weight:800}
+  .item span{font-size:12px;color:var(--muted);line-height:1.35}
+
+  footer{margin-top:auto;padding-top:8px;text-align:center;display:flex;flex-direction:column;gap:6px}
+  .legal{font-size:11px;color:#7a7a7a;line-height:1.4}
+  .by{font-size:12px;color:var(--muted)}
+  .by strong{color:var(--text)}
+</style>
+</head>
+<body>
+<main>
+  <header class="brand">
+    <p class="kicker">Lentes con cámara</p>
+    <h1>El Rayman<span aria-hidden="true"></span></h1>
+    <p class="handle">@elrayman · Graba todo sin sacar el celular</p>
+  </header>
+
+  <div class="price">
+    <p class="kicker">Todo grabado con</p>
+    <strong>Ray-Ban Meta</strong>
+    <p class="sub">Lentes con cámara</p>
+    <p class="amount">S/ 950</p>
+    <p class="dm">DM @elrayman</p>
+  </div>
+
+  <div class="actions">
+    <a class="btn wa" href="https://wa.me/51933654709?text=Hola%2C%20vi%20tu%20tarjeta%20y%20quiero%20mis%20Ray-Ban%20Meta">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.2 1.1z"/></svg>
+      Pide los tuyos</a>
+    <div class="row">
+      <a class="btn ghost" href="https://www.tiktok.com/@elrayman" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 3c.4 2.3 1.9 3.9 4.4 4.1v3.1c-1.6.1-3-.4-4.4-1.3v6.2c0 3.6-2.6 6-5.9 6-3.4 0-5.7-2.6-5.7-5.7 0-3.6 3.2-6.2 6.9-5.6v3.3c-1.7-.4-3.6.6-3.6 2.4 0 1.4 1.1 2.4 2.4 2.4 1.5 0 2.6-1 2.6-2.9V3z"/></svg>
+        TikTok</a>
+      <a class="btn ghost" href="el-rayman.vcf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M2 21c0-4 3.6-7 8-7"/><path d="M19 14v7M15.5 17.5h7"/></svg>
+        Guardar</a>
+    </div>
+  </div>
+
+  <section>
+    <p class="label">Lo que hacen</p>
+    <div class="list">
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="13" rx="3"/><circle cx="12" cy="12.5" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg>
+        <b>Graba todo</b><span>Fotos y videos con las manos libres</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>
+        <b>Música y llamadas</b><span>Audio abierto, sin audífonos</span>
+      </div>
+      <div class="item">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/></svg>
+        <b>Asistente de voz</b><span>Pregunta sin tocar nada</span>
+      </div>
+      <a class="item" href="https://wa.me/51933654709?text=Hola%2C%20%C2%BFqu%C3%A9%20modelos%20y%20colores%20tienes%3F">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        <b>Modelos</b><span>Pregunta por colores y stock</span>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p class="legal">Distribuidor independiente. Ray-Ban y Meta son marcas de sus respectivos dueños.</p>
+    <p class="by">Tarjeta digital por <strong>Tinkuy NFC</strong></p>
+  </footer>
+</main>
+</body>
+</html>
