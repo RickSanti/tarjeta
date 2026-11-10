@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Restaurante Turín · Tinkuy NFC</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1c120c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+<script>
+/* =====================================================================
+   PLANTILLA TINKUY NFC · LANDING DE NEGOCIO (reseñas + WhatsApp + redes)
+   Para un cliente nuevo: copiar esta carpeta (ej. /e0001/) y editar SOLO
+   este bloque. El diseño de abajo no se toca.
+   ===================================================================== */
+const NEGOCIO = {
+  nombre: "Restaurante Turín",
+  rubro: "Tarma · Junín",
+  promesa: "Restaurant bar, buffets y catering. Todos los días de 7 a. m. a 10 p. m.",
+  // Propuesta: ilustración propia (sin fotos de Facebook ni de Google por derechos).
+  // Si compra: reemplazar por una foto real del local o de sus platos, con permiso.
+  foto: "foto.jpg",
+  resenas: "https://search.google.com/local/writereview?placeid=ChIJPe1bcLQhCZER4UI_t5O0qcE",
+  calificacion: null,      // real en Google (09/11/2026): 4,3 con 128 reseñas; oculto como en El Mezón
+  totalResenas: null,
+  whatsapp: "51910662251",
+  mensajeWhatsapp: "Hola Restaurante Turín, quisiera hacer una consulta",
+  direccion: "Av. Manuel A. Odría 376, Tarma",
+  mapa: "https://maps.google.com/?cid=13954883466911761121",
+  redes: [
+    { red: "facebook", url: "https://www.facebook.com/people/Restaurante-Turin-Tarma/100063545862237/" }
+  ],
+  colores: { fondo: "#f6efe4", oscuro: "#1c120c", acento: "#e0a43a", texto: "#2b1d16" },
+  esMuestra: false
+};
+</script>
+<style>
+  :root{
+    --fondo:#f6efe4; --oscuro:#1c120c; --acento:#e0a43a; --texto:#2b1d16;
+    --suave:#5b4a3f; --linea:#ddd0bd; --papel:#fffaf2;
+  }
+  *{box-sizing:border-box;margin:0}
+  html,body{background:var(--oscuro)}
+  body{min-height:100vh;display:flex;justify-content:center;font-family:"Manrope",system-ui,sans-serif;color:var(--texto);-webkit-font-smoothing:antialiased}
+  main{width:100%;max-width:440px;min-height:100vh;background:var(--fondo);display:flex;flex-direction:column}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+
+  /* 1 · HERO: foto real + degradado (lo primero que procesa el ojo) */
+  .hero{position:relative;min-height:46vh;min-height:46svh;padding:28px 24px 26px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;
+    background:#3a2619 center/cover no-repeat;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,12,8,.25) 0%,rgba(20,12,8,.55) 45%,rgba(20,12,8,.92) 100%)}
+  .hero>*{position:relative}
+  .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .rubro{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#f3e6d3}
+  .badge{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-size:13px;font-weight:800;white-space:nowrap}
+  .badge svg{width:14px;height:14px;fill:var(--acento)}
+  h1{font-family:"Fraunces",Georgia,serif;font-size:clamp(40px,12vw,52px);font-weight:700;line-height:.95;letter-spacing:-.02em}
+  .promesa{margin-top:10px;font-size:17px;font-weight:700;line-height:1.35;color:#f3e6d3;max-width:22ch}
+  .lugar{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:#f3e6d3}
+  .lugar svg{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2}
+
+  /* 2 · TARJETA DE RESEÑA: sube sobre la foto para quedar a la vista sin bajar */
+  .card{margin:-22px 16px 0;position:relative;padding:20px 18px 18px;border-radius:22px;background:var(--papel);box-shadow:0 14px 34px rgba(28,18,12,.22);text-align:center}
+  .card h2{font-size:19px;font-weight:800;line-height:1.25}
+  .card p{margin-top:4px;font-size:14px;color:var(--suave)}
+  .stars{margin:14px auto 12px;display:flex;justify-content:center;gap:6px}
+  .star{width:48px;height:48px;padding:4px;border:0;background:none;cursor:pointer;border-radius:12px;transition:transform .15s}
+  .star svg{width:100%;height:100%;fill:var(--linea);transition:fill .15s}
+  .star.on svg{fill:var(--acento)}
+  .star:active{transform:scale(.92)}
+  .cta{display:flex;align-items:center;justify-content:center;gap:10px;min-height:60px;border-radius:16px;background:var(--acento);color:var(--oscuro);font-size:17px;font-weight:800;
+    box-shadow:0 0 0 0 rgba(224,164,58,.55);animation:pulso 2.2s ease-out infinite}
+  .cta svg{width:22px;height:22px;flex:none}
+  @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(224,164,58,.55)}70%{box-shadow:0 0 0 14px rgba(224,164,58,0)}100%{box-shadow:0 0 0 0 rgba(224,164,58,0)}}
+  .nota{margin-top:10px;font-size:12px;color:var(--suave)}
+
+  /* 3 · RESTO */
+  .body{padding:18px 16px 8px;display:flex;flex-direction:column;gap:12px}
+  .wa{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:16px;background:var(--oscuro);color:var(--papel);font-size:16px;font-weight:800}
+  .wa svg{width:22px;height:22px;flex:none}
+  .label{margin-top:6px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--suave);text-align:center}
+  .redes{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px}
+  .red{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:72px;border-radius:14px;border:2px solid var(--linea);background:var(--papel);font-size:14px;font-weight:700}
+  .red svg{width:24px;height:24px;fill:none;stroke:var(--texto);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .muestra{margin:8px 16px 0;padding:12px 14px;border-radius:14px;border:2px dashed var(--linea);font-size:13px;line-height:1.45;color:var(--suave);text-align:center}
+  .muestra a{font-weight:800;color:#a8471f;text-decoration:underline}
+  footer{padding:16px 24px 24px;text-align:center;font-size:12px;color:var(--suave)}
+  footer strong{color:var(--texto)}
+  [hidden]{display:none!important}
+  @media (prefers-reduced-motion:reduce){.cta{animation:none}.star,.star svg{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <header class="hero" id="hero">
+    <div class="top">
+      <p class="rubro" id="rubro"></p>
+      <p class="badge" id="badge" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.3 6.9 1-5 4.8 1.2 6.9L12 17.8 5.9 21l1.2-6.9-5-4.8 6.9-1z"/></svg><span id="badgeTxt"></span></p>
+    </div>
+    <div>
+      <h1 id="nombre"></h1>
+      <p class="promesa" id="promesa"></p>
+      <a class="lugar" id="lugar" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><span id="lugarTxt"></span></a>
+    </div>
+  </header>
+
+  <section class="card" aria-labelledby="pide">
+    <h2 id="pide">¿Cómo fue tu visita?</h2>
+    <p>Tu reseña en Google nos ayuda a crecer.</p>
+    <div class="stars" role="group" aria-label="Toca una estrella para dejar tu reseña en Google" id="stars"></div>
+    <a class="cta" id="cta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>
+      Dejar mi reseña en Google</a>
+    <p class="nota">Toma menos de un minuto.</p>
+  </section>
+
+  <section class="body">
+    <a class="wa" id="wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.2 1.1z"/></svg>
+      Escríbenos por WhatsApp</a>
+    <p class="label" id="redesLabel">Síguenos</p>
+    <nav class="redes" id="redes" aria-label="Redes sociales"></nav>
+  </section>
+
+  <p class="muestra" id="muestra" hidden>Esta es una <strong>página de muestra</strong> con un negocio de ejemplo. ¿Quieres una así para tu negocio? <a href="https://wa.me/51933654709?text=Hola%20Ricardo%2C%20vi%20la%20muestra%20de%20Tinkuy%20NFC%20y%20quiero%20una%20placa">Escríbenos</a></p>
+  <footer>Placa NFC por <strong>Tinkuy</strong></footer>
+</main>
+
+<script>
+(function () {
+  const N = NEGOCIO, $ = (id) => document.getElementById(id);
+  const root = document.documentElement.style;
+  Object.entries(N.colores || {}).forEach(([k, v]) => root.setProperty("--" + k, v));
+  document.title = N.nombre + " · Tinkuy NFC";
+
+  if (N.foto) $("hero").style.backgroundImage = "url('" + N.foto + "')";
+  $("rubro").textContent = N.rubro || "";
+  $("nombre").textContent = N.nombre;
+  $("promesa").textContent = N.promesa || "";
+  if (N.direccion) {
+    $("lugarTxt").textContent = N.direccion; $("lugar").hidden = false;
+    if (N.mapa) { $("lugar").href = N.mapa; $("lugar").target = "_blank"; $("lugar").rel = "noopener"; }
+  }
+  if (typeof N.calificacion === "number") {
+    $("badgeTxt").textContent = N.calificacion.toFixed(1) + " en Google" + (N.totalResenas ? " · " + N.totalResenas : "");
+    $("badge").hidden = false;
+  }
+
+  // Estrellas: cualquier calificación (1 a 5) lleva igual a Google. No se filtra a nadie.
+  const STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 6.3 6.9 1-5 4.8 1.2 6.9L12 17.8 5.9 21l1.2-6.9-5-4.8 6.9-1z"/></svg>';
+  const stars = $("stars");
+  for (let i = 1; i <= 5; i++) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "star"; b.innerHTML = STAR;
+    b.setAttribute("aria-label", i + (i === 1 ? " estrella" : " estrellas") + ", ir a Google");
+    b.addEventListener("click", () => {
+      [...stars.children].forEach((s, j) => s.classList.toggle("on", j < i));
+      setTimeout(() => { window.open(N.resenas, "_blank", "noopener"); }, 250);
+    });
+    stars.appendChild(b);
+  }
+  $("cta").href = N.resenas;
+  $("wa").href = "https://wa.me/" + N.whatsapp + "?text=" + encodeURIComponent(N.mensajeWhatsapp || "");
+
+  const ICON = {
+    instagram: '<rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/>',
+    tiktok: '<path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/>',
+    facebook: '<path d="M7 11v9M7 11l4-7a2 2 0 0 1 3 2l-1 4h5a2 2 0 0 1 2 2.3l-1 6A2 2 0 0 1 17 20H7M3 11h4v9H3z"/>',
+    youtube: '<rect x="2.5" y="5.5" width="19" height="13" rx="4"/><path d="M10 9.5v5l4.5-2.5z"/>',
+    web: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>'
+  };
+  const NAME = { instagram: "Instagram", tiktok: "TikTok", facebook: "Facebook", youtube: "YouTube", web: "Web" };
+  const redes = (N.redes || []).filter((r) => r.url);
+  redes.forEach((r) => {
+    const a = document.createElement("a");
+    a.className = "red"; a.href = r.url; a.target = "_blank"; a.rel = "noopener";
+    a.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + (ICON[r.red] || ICON.web) + "</svg>" + (NAME[r.red] || r.red);
+    $("redes").appendChild(a);
+  });
+  if (!redes.length) { $("redes").hidden = true; $("redesLabel").hidden = true; }
+  $("muestra").hidden = !N.esMuestra;
+})();
+</script>
+</body>
+</html>
